@@ -1,0 +1,29 @@
+name: Get Files
+
+on:
+  push:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  unity:
+    runs-on: ubuntu-latest
+
+    steps:
+#       - uses: actions/checkout@v3
+
+    - name: Setup Unity Editor
+      uses: kuler90/setup-unity@v1.1.0
+      with:
+        unity-version: 2022.2.9f1
+        install-path: /mnt
+    
+    - name: Tree the /mnt directory
+      run: tree -L 5 --filelimit 50 /mnt
+      
+#     - name: Upload a Build Artifact
+#       uses: actions/upload-artifact@v3.1.2
+#       with:
+#         name: UnityEditor.dll
+#         path: 
+#         if-no-files-found: error
