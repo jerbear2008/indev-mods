@@ -11,6 +11,11 @@ jobs:
 
     steps:
 #       - uses: actions/checkout@v3
+    
+    - name: Install FUSE
+      run: |
+        sudo add-apt-repository universe
+        sudo apt install libfuse2
 
     - name: Setup Unity Editor
       uses: kuler90/setup-unity@v1.1.0
